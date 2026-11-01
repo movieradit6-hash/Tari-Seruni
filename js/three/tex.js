@@ -92,6 +92,6 @@ const TL = new THREE.TextureLoader()
 export function img(file, w = 1024) {
   const t = new THREE.Texture(); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8
   const set = im => { t.image = im; t.needsUpdate = true }
-  TL.load(`/.netlify/images?url=/img/${file}&w=${w}&fm=webp`, x => set(x.image), undefined, () => TL.load('/img/' + file, x => set(x.image)))
+  TL.load('img/' + file, x => set(x.image))
   return t
 }
