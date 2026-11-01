@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5c0b1a">
+<meta name="description" content="Tari Sambut Seruni Musi – tari penyambutan kreasi Palembang untuk 7 penari. Musik orisinal 5 menit, pola lantai, panggung & museum 3D bersama pemandu Seruni.">
+<title>Tari Sambut Seruni Musi – SMP Negeri 18 Palembang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/app.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+</head>
+<body>
+<div id="petals" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="top">
+    <label class="lg" title="Ketuk untuk mengganti logo"><input id="lgf" type="file" accept="image/*" hidden><span id="lgi" style="display:contents"><svg viewBox="0 0 60 60"><defs><radialGradient id="lgG" cx=".35" cy=".3"><stop offset="0" stop-color="#9c1c30"/><stop offset="1" stop-color="#4a0815"/></radialGradient></defs><circle cx="30" cy="30" r="28" fill="url(#lgG)" stroke="#e3a93a" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#e3a93a" font-family="Georgia">SMPN</text><text x="30" y="43" text-anchor="middle" font-size="15" font-weight="700" fill="#fff3d6" font-family="Georgia">18</text></svg></span></label>
+    <div class="school"><b>SMP Negeri 18 Palembang</b><small>Ketuk logo untuk mengganti</small></div>
+    <div class="top-act">
+      <button class="ic-btn" id="snd" aria-label="Efek suara"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button>
+      <button class="ic-btn" id="thm" aria-label="Tema gelap/terang"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+    </div>
+  </div>
+  <div class="hero-txt">
+    <small class="k">TUGAS SENI TARI KELOMPOK · PALEMBANG, SUMATRA SELATAN</small>
+    <h1>Tari Sambut <em>Seruni</em> Musi</h1>
+    <p>Tari penyambutan tamu kreasi Palembang: anggun, ramah, dan penuh hormat. Disusun untuk 7 penari (4 laki-laki, 3 perempuan) dengan 12 gerak dasar sederhana, durasi tepat 5 menit.</p>
+    <div class="ch"><span>7 penari</span><span>5:00 · 103 bar</span><span>64–100 BPM · 4/4</span><span>12 gerak · 6 bagian</span></div>
+    <div class="cta"><button class="btn gold" id="heroPlay"><span>▶</span> Putar Musik</button><button class="btn glass" id="heroAsk"><span class="mini-seruni"></span> Tanya Seruni</button></div>
+  </div>
+  <div class="songket-strip" aria-hidden="true"></div>
+</header>
+
+<main>
+<!-- ===== TAMPIL ===== -->
+<section class="pg on" id="p0">
+  <div class="gl player">
+    <div class="pl-row">
+      <button id="pl" aria-label="Putar / jeda"><svg class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle id="ringP" cx="50" cy="50" r="46"/></svg><span id="gl">▶</span></button>
+      <div class="pl-meta">
+        <small class="lbl">SEDANG DIPUTAR</small>
+        <b id="nowT">Fajar di Sungai Musi</b>
+        <span id="tm">0:00 / 5:00</span>
+      </div>
+      <canvas id="viz" width="300" height="70" aria-hidden="true"></canvas>
+    </div>
+    <div id="bar" role="slider" aria-label="Posisi musik"><div id="barSec"></div><i></i><b id="barK"></b></div>
+    <div class="row ctl-row">
+      <button class="lf" id="stp">■ Stop</button><button class="lf" id="pv">◀ Pola</button><button class="lf" id="nx">Pola ▶</button>
+      <label class="vol"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/></svg><input id="vol" type="range" min="0" max="1" step=".05" value=".8" aria-label="Volume musik"></label>
+    </div>
+    <div class="ig">
+      <div><small>BAGIAN</small><b id="ib"></b></div><div><small>BAR</small><b id="ir"></b></div>
+      <div><small>GERAK</small><b id="ig"></b></div><div><small>HITUNGAN</small><div id="pp"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></div></div>
+    </div>
+  </div>
+
+  <h2><i>I</i>Pola Lantai</h2>
+  <div class="gl">
+    <svg id="sv" class="sv" viewBox="0 0 100 62" role="img" aria-label="Pola lantai tujuh penari"></svg>
+    <p class="sub">Hijau = laki-laki (L1–L4, tanjak) · merah delima = perempuan (P1–P3, kipas). <b>Kiri dan kanan mengikuti sudut pandang penonton.</b></p>
+    <small id="fc" class="fc"></small><h3 id="fn"></h3><p id="fd" style="margin:0"></p>
+    <div class="q"><small>GERAK SEKARANG</small><br><b id="gk">–</b></div>
+  </div>
+
+  <!-- Panggung 3D: terkunci sampai diminta lewat Seruni -->
+  <div class="gl lock" id="lock3">
+    <div class="lock-art" aria-hidden="true"><span>🎭</span></div>
+    <div><b>Panggung 3D Megah</b><p>Panggung tepian Musi dengan rumah limas, Jembatan Ampera, lampion, dan 7 penari 3D. Hanya Seruni yang bisa membukanya.</p>
+    <button class="btn soft" data-ask="Aktifkan panggung 3D">Minta Seruni membuka ✦</button></div>
+  </div>
+  <div id="v3wrap" class="gl v3wrap" hidden>
+    <div class="v3head">
+      <div class="seg" id="wsel"><button data-w="stage" class="on">🎭 Panggung</button><button data-w="museum" hidden>🏛️ Museum</button></div>
+      <div class="v3tools"><button class="chip" id="qBtn" title="Kualitas grafis">HD</button><button class="chip" id="nmBtn" title="Tampilkan nama">Nama</button></div>
+    </div>
+    <div id="v3" class="v3">
+      <div id="c3"></div>
+      <div class="v3load" id="v3load"><div class="spin"></div><span>Menyiapkan panggung…</span></div>
+      <div class="hud" id="hud">
+        <div class="hud-top"><div><small id="hudK">PANGGUNG TEPIAN MUSI</small><b id="hudT">Tari Sambut Seruni Musi</b></div><button class="hb" id="fsx" aria-label="Keluar layar penuh">✕</button></div>
+        <button class="hud-big" id="hudBig" aria-label="Putar">▶</button>
+        <div class="hud-sub" id="hudSub"></div>
+        <div class="hud-bot">
+          <button class="hb" id="hudPlay" aria-label="Putar / jeda">▶</button>
+          <span class="hud-tm" id="hudTm">0:00 / 5:00</span>
+          <div class="hud-bar" id="hudBar"><i></i></div>
+          <button class="hb" id="camBtn" aria-label="Ganti kamera" title="Kamera">🎥</button>
+          <button class="hb" id="fsb" aria-label="Layar penuh" title="Layar penuh landscape">⛶</button>
+        </div>
+        <div class="game" id="game" hidden>
+          <div class="joy" id="joy"><i></i></div>
+          <div class="acts"><button class="ab" id="aJump">Lompat</button><button class="ab" id="aWave">Salam</button><button class="ab" id="aDance">Menari</button><button class="ab gold" id="tpb" hidden>Museum</button></div>
+        </div>
+        <div class="ic" id="ic" hidden></div>
+        <div class="v3toast" id="v3toast"></div>
+      </div>
+    </div>
+    <div class="row cams" id="cb"><button class="lf on" data-v="cine">Sinematik</button><button class="lf" data-v="d">Depan</button><button class="lf" data-v="b">Belakang</button><button class="lf" data-v="l">Kiri</button><button class="lf" data-v="r">Kanan</button><button class="lf" data-v="a">Atas</button></div>
+    <small class="hint" id="v3hint">Seret untuk memutar kamera, cubit/gulir untuk zoom. Tombol ⛶ untuk menonton layar penuh landscape.</small>
+  </div>
+
+  <h2><i>II</i>Sungai Waktu</h2>
+  <div class="gl"><svg viewBox="0 0 300 54" class="sv river"><defs><linearGradient id="rvG" x1="0" x2="1"><stop offset="0" stop-color="#2a9d8f"/><stop offset=".5" stop-color="#1f8a52"/><stop offset="1" stop-color="#2a6f97"/></linearGradient></defs><path d="M5 27q18-14 36 0t36 0 36 0 36 0 36 0 36 0 36 0 36 0" fill="none" stroke="url(#rvG)" stroke-width="7" opacity=".55" stroke-linecap="round"/><g id="rv"></g><g id="bm"><path d="M-9 -10l9 -9 9 9z" fill="#ffd76a" stroke="#b8860b" stroke-width=".8"/></g></svg><p class="sub" style="margin:0">Ketuk teratai untuk melompat ke bagian.</p></div>
+</section>
+
+<!-- ===== TARI ===== -->
+<section class="pg" id="p1">
+  <h2><i>I</i>Sinopsis</h2>
+  <div class="sc"><p style="margin:0">Tari kreasi yang terinspirasi dari tradisi dan kehidupan masyarakat Palembang, Sumatra Selatan. Tarian ini menggambarkan keramahan masyarakat dalam menyambut tamu, semangat gotong royong, serta kebersamaan dalam menjaga dan melestarikan budaya daerah. Diawali gerakan penari perempuan yang melambangkan kelembutan dan keramahan, dilanjutkan penari laki-laki dengan gerakan tegas yang melambangkan keberanian dan tanggung jawab. Selanjutnya penari laki-laki dan perempuan menari bersama dengan gerakan harmonis sebagai simbol persatuan, kerja sama, dan keharmonisan dalam kehidupan bermasyarakat. Melalui perpaduan musik tradisional dan properti yang terinspirasi budaya Palembang, tarian ini menyampaikan pesan bahwa kebudayaan merupakan warisan berharga yang harus dijaga dan dilestarikan oleh generasi muda.</p></div>
+  <div class="sc"><b>Arti nama (tafsir kelompok):</b> Sambut = menyambut tamu · Seruni = bunga seruni, lambang keindahan dan keramahan · Musi = Sungai Musi, urat nadi kehidupan dan budaya Palembang.</div>
+  <h2><i>II</i>Tujuh Penari</h2>
+  <div class="cast" id="cast"></div>
+  <h2><i>III</i>Struktur 6 Bagian</h2><div class="row" id="sb"></div><div class="sc" id="sl">Ketuk teratai bagian.</div>
+  <h2><i>IV</i>12 Gerak Dasar</h2><div class="wh" id="wg"></div><div class="sc" id="gd">Ketuk kelopak untuk melihat langkahnya.</div>
+  <h2><i>V</i>Roda Pola</h2><div class="wh" id="wp"></div>
+</section>
+
+<!-- ===== BUDAYA ===== -->
+<section class="pg" id="p2">
+  <h2><i>I</i>Busana &amp; Properti</h2>
+  <div class="row seg2" id="bug"><button class="lf on" data-g="P">Perempuan</button><button class="lf" data-g="L">Laki-laki</button></div>
+  <div class="row" id="bu" style="margin-top:8px"></div><div class="sc" id="bd2">Ketuk salah satu.</div>
+  <h2><i>II</i>Dunia Palembang <small id="cn" class="cnt">0/6</small></h2>
+  <svg id="pa" class="pa" viewBox="0 0 300 170">
+    <defs><linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffcf8a"/><stop offset=".6" stop-color="#ff9a6b"/><stop offset="1" stop-color="#ffd9a0"/></linearGradient><linearGradient id="watG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3aa79a"/><stop offset="1" stop-color="#1d6f7a"/></linearGradient><radialGradient id="sunG"><stop offset="0" stop-color="#fffbe8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+    <rect width="300" height="170" fill="url(#skyG)"/><circle cx="150" cy="62" r="46" fill="url(#sunG)"/><circle cx="150" cy="62" r="24" fill="#fff6da" opacity=".85"/>
+    <g id="am" class="hs"><path d="M20 100H280M20 100L75 48L150 100L225 48L280 100M75 48V100M225 48V100" fill="none" stroke="#7a1425" stroke-width="2.4" stroke-linejoin="round"/><rect x="71" y="40" width="8" height="60" rx="1" fill="#9c1c30"/><rect x="221" y="40" width="8" height="60" rx="1" fill="#9c1c30"/><circle class="lt" cx="75" cy="44" r="3.5"/><circle class="lt" cx="110" cy="74" r="3"/><circle class="lt" cx="150" cy="98" r="3"/><circle class="lt" cx="190" cy="74" r="3"/><circle class="lt" cx="225" cy="44" r="3.5"/></g>
+    <g id="go" class="hs"><circle cx="30" cy="34" r="20" fill="#b8860b" stroke="#ffd76a" stroke-width="3"/><circle cx="30" cy="34" r="12" fill="none" stroke="#ffd76a" stroke-width="1" opacity=".6"/><circle cx="30" cy="34" r="8" fill="#ffd76a"/></g>
+    <path id="kn" class="hs" d="M232 14q22 10 46 0v62q-22 10-46 0z" fill="#8c1d2c" stroke="#e3a93a" stroke-dasharray="3 3"/><path id="th" d="" fill="none" stroke="#ffd76a" stroke-width="1.6" stroke-linecap="round"/>
+    <rect x="0" y="108" width="300" height="62" fill="url(#watG)"/><path d="M0 120q15-4 30 0t30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0M0 140q15-4 30 0t30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0" fill="none" stroke="#fff" stroke-opacity=".25" class="waves"/>
+    <g id="bo" class="hs" style="transform:translateX(100px)"><path d="M0 118q30 14 60 0l-6 9H6z" fill="#f6e7c8" stroke="#8c1d2c" stroke-width=".8"/><path d="M8 110h44" stroke="#e3a93a" stroke-width="2"/><circle cx="14" cy="108" r="3" fill="#d6334f"/><circle cx="26" cy="108" r="3" fill="#d6334f"/><circle cx="38" cy="108" r="3" fill="#1f8a52"/><circle cx="50" cy="108" r="3" fill="#1f8a52"/></g><g id="rg"></g>
+  </svg>
+  <div class="row" style="margin-top:8px"><svg id="tg" viewBox="0 0 160 60" style="flex:1;min-width:140px;touch-action:none"></svg><svg id="kp" viewBox="0 0 160 80" style="flex:1;min-width:140px;touch-action:none"></svg></div>
+  <div class="sc" id="hi">Ketuk, geser, atau gores benda-benda di atas: gong, Ampera, perahu bidar, kain songket, kuku tanggai, dan kipas.</div>
+  <h2><i>III</i>Museum Palembang</h2>
+  <div class="gl lock" id="lockM">
+    <div class="lock-art museum" aria-hidden="true"><span>🏛️</span></div>
+    <div><b>Museum Seni &amp; Budaya Palembang</b><p>Gedung tertutup terpisah dari panggung: lampu gantung emas, lantai marmer, lukisan, dan koleksi seperti tepak sirih, songket, tanjak, Aesan Gede, sampai Prasasti Kedukan Bukit.</p>
+    <button class="btn soft" data-ask="Buka museum">Minta Seruni membuka ✦</button></div>
+  </div>
+</section>
+
+<!-- ===== GERAK & POLA ===== -->
+<section class="pg" id="p3">
+  <h2><i>I</i>Belajar Menari</h2>
+  <div class="gl"><div class="row"><button class="lf on" id="pl2">▶ Putar / Jeda</button><span class="mut">Tempo</span><span class="row" id="tpo"><button class="lf on" data-r="1">100%</button><button class="lf" data-r=".75">75%</button><button class="lf" data-r=".5">50%</button></span></div><div class="q" id="lv">Tekan putar.</div><p class="sub">Ulang satu bagian musik (gerak, hitungan, dan pola lantai ikut berulang):</p><div class="row" id="sl2"></div></div>
+  <h2><i>II</i>12 Ragam Gerak</h2><div class="row" id="mvl"></div><div class="sc" id="mvd">Pilih satu ragam gerak untuk melihat cara melakukannya, makna, properti, dan waktu tampilnya di musik.</div>
+  <h2><i>III</i>Latihan</h2><div class="gl"><div class="row"><button class="lf" id="mn">Metronom: mati</button><button class="lf" id="qz">Uji Formasi</button><span class="score" id="qs"></span></div><p id="qt" style="margin:8px 0">Tebak nama formasi dari maknanya.</p><div class="row" id="qo"></div></div>
+  <h2><i>IV</i>Tips Latihan</h2><div class="row" id="tp0"></div><div class="sc" id="tp">Petik satu melati.</div>
+</section>
+
+<!-- ===== TENTANG ===== -->
+<section class="pg" id="p4">
+  <h2><i>I</i>Tentang Aplikasi</h2>
+  <div class="gl about"><p class="credit">Seluruh instrumen, aplikasi, pemandu Seruni, dan lainnya dibuat oleh Radit Ganteng.</p>Musik: komposisi orisinal 5 menit yang dibuat langsung di browser (Web Audio API) dengan nuansa Melayu Palembang: gong, kenong, saron, gambus, akordeon, suling, biola, gendang melayu, rebana, dan kerincing. Dinamikanya bergerak dari fajar yang lembut sampai Pesta Rakyat yang meriah.<br>3D: panggung, museum, dan tujuh karakter dibuat dengan Three.js. Si Seruni, pemandu yang ramah, bekerja di perangkatmu berdasarkan data tari ini, bukan model AI daring.<br><b>SMP Negeri 18 Palembang</b></div>
+  <h2><i>II</i>Perintah Rahasia Seruni</h2>
+  <div class="sc cmds" id="cmds"></div>
+</section>
+<div class="ft"></div><p class="foot">Tari Sambut Seruni Musi · Tugas Seni Tari Kelompok · Musik: komposisi orisinal (Web Audio API)</p>
+</main>
+
+<nav id="tb" aria-label="Menu utama"><div id="ls"></div>
+  <button class="tab on"><svg viewBox="0 0 24 24"><circle cx="12" cy="11" r="7"/><circle cx="12" cy="11" r="2.5"/><path d="M4 21h16"/></svg>Tampil</button>
+  <button class="tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5V3M12 14.5V21M9.5 12H3M14.5 12H21M10 10L5.5 5.5M14 14L18.5 18.5M14 10L18.5 5.5M10 14L5.5 18.5"/></svg>Tari</button>
+  <button class="tab"><svg viewBox="0 0 24 24"><path d="M2 18h20M4 18L8 8l4 10 4-10 4 10M8 8V18M16 8V18"/></svg>Budaya</button>
+  <button class="tab"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="8" rx="8" ry="3"/><path d="M4 8v8c0 1.7 3.6 3 8 3s8-1.3 8-3V8"/></svg>Gerak &amp; Pola</button>
+  <button class="tab" aria-label="Tentang"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>Tentang</button>
+</nav>
+
+<div id="bl" role="button" tabindex="0" aria-label="Pemandu Si Seruni"></div>
+<div id="chs" aria-hidden="true"></div>
+<div id="ch" role="dialog" aria-label="Si Seruni">
+  <div class="ch-head"><span id="ca"></span><div><b>Si Seruni</b><small>Pemandu tarianmu, tanya apa saja!</small></div><button class="lf" id="cx">Tutup</button></div>
+  <div id="ms"></div><div id="cp"></div>
+  <div class="ch-in"><input id="ci" placeholder="Tanya atau beri perintah ke Seruni…" aria-label="Pertanyaan" autocomplete="off"><button class="btn gold" id="cs" aria-label="Kirim">➤</button></div>
+</div>
+<div id="toast" role="status"></div>
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>
