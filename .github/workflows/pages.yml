@@ -21,9 +21,9 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
-      - run: rm -rf .git .github netlify.toml
+      - run: python3 .github/build_pages.py
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: dist
       - id: deployment
         uses: actions/deploy-pages@v4

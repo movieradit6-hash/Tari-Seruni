@@ -10,7 +10,7 @@ h3{color:var(--rd);font-size:1.25rem}button{font:inherit;color:var(--ink);cursor
 
 /* Hero */
 .hero{position:relative;color:#fbeed2;padding:14px 18px 34px;border-radius:0 0 44px 44px;overflow:hidden;isolation:isolate;min-height:min(78vh,620px);display:flex;flex-direction:column}
-.hero-bg{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#2a0610cc 0%,#5c0b1a66 35%,#5c0b1acc 75%,#3a0610 100%),url("../img/hero-musi.png") center 40%/cover,#5c0b1a;transform:scale(1.06);animation:kb 26s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#2a0610cc 0%,#5c0b1a66 35%,#5c0b1acc 75%,#3a0610 100%),url("/.netlify/images?url=/img/hero-musi.png&w=1600&fm=webp") center 40%/cover,#5c0b1a;transform:scale(1.06);animation:kb 26s ease-in-out infinite alternate}
 @keyframes kb{to{transform:scale(1.14) translate(-1.5%,1%)}}
 .top{display:flex;gap:10px;align-items:center}.school small{display:block;opacity:.75;font-size:.72rem}.top-act{margin-left:auto;display:flex;gap:8px}
 .lg{width:54px;height:54px;border-radius:50%;background:#fff3d6;overflow:hidden;cursor:pointer;display:grid;place-items:center;flex:none;border:2px solid #e3a93a;box-shadow:0 0 0 4px #e3a93a33}.lg img,.lg svg{width:100%;height:100%;object-fit:contain}
@@ -78,7 +78,7 @@ svg.pa{width:100%;height:auto;display:block;border-radius:30px 30px 10px 10px;bo
 
 /* Kunci 3D */
 .lock{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,#5c0b1a,#8c1d2c 60%,#b3122e);color:#fbeed2;border:0;position:relative;overflow:hidden}
-.lock:after{content:"";position:absolute;inset:0;background:url("../img/songket.png") center/220px;opacity:.12;mix-blend-mode:screen;pointer-events:none}
+.lock:after{content:"";position:absolute;inset:0;background:url("/.netlify/images?url=/img/songket.png&w=400&fm=webp") center/220px;opacity:.12;mix-blend-mode:screen;pointer-events:none}
 .lock p{margin:4px 0 10px;opacity:.88;font-size:.9rem}.lock b{font-family:var(--fh);font-size:1.2rem;color:#ffd76a}.lock .btn{position:relative;z-index:1}
 .lock-art{flex:none;width:82px;height:82px;border-radius:50%;display:grid;place-items:center;font-size:2.4rem;background:radial-gradient(circle,#ffd76a55,transparent 70%);border:2px dashed #ffd76a88;animation:spin 18s linear infinite}.lock-art span{animation:spin 18s linear infinite reverse}
 .lock .btn.soft{background:linear-gradient(135deg,#ffe08a,#e8a524);color:#2a1210}
@@ -182,7 +182,7 @@ svg.sv .tok{transform-box:fill-box;transform-origin:center}
 .cast{gap:12px}
 .cm{background:linear-gradient(180deg,#fffdf8,#fff3dc);border:1px solid #f2d9a8;box-shadow:0 10px 22px #7a14251a,inset 0 1px 0 #fff;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s}
 .cm:before{height:70px;background:radial-gradient(circle at 30% 0,#ffffff55,transparent 50%),linear-gradient(135deg,var(--c),#2a1210)}
-.cm:after{content:"";position:absolute;left:0;right:0;top:62px;height:16px;background:url("../img/songket.png") center/120px;opacity:.35;mix-blend-mode:multiply;pointer-events:none}
+.cm:after{content:"";position:absolute;left:0;right:0;top:62px;height:16px;background:url("/.netlify/images?url=/img/songket.png&w=300&fm=webp") center/120px;opacity:.35;mix-blend-mode:multiply;pointer-events:none}
 .cm svg{width:96px;height:96px;filter:drop-shadow(0 8px 10px #5c0b1a40)}
 .cm:hover,.cm.on{transform:translateY(-3px);box-shadow:0 16px 28px #7a142533}
 .cm.on svg{animation:hop .9s cubic-bezier(.34,1.56,.64,1)}

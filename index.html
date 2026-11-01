@@ -4,22 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#5c0b1a">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icons/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Seruni Musi">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="description" content="Tari Sambut Seruni Musi – tari penyambutan kreasi Palembang untuk 7 penari. Musik orisinal 5 menit, pola lantai, panggung & museum 3D bersama pemandu Seruni.">
 <title>Tari Sambut Seruni Musi – SMP Negeri 18 Palembang</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/app.css">
-<script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js","three/addons/":"./vendor/three/addons/"}}</script>
+<link rel="stylesheet" href="/css/app.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
 </head>
 <body>
 <div id="petals" aria-hidden="true"></div>
@@ -189,7 +180,6 @@
   <div class="ch-in"><input id="ci" placeholder="Tanya atau beri perintah ke Seruni…" aria-label="Pertanyaan" autocomplete="off"><button class="btn gold" id="cs" aria-label="Kirim">➤</button></div>
 </div>
 <div id="toast" role="status"></div>
-<script type="module" src="js/app.js"></script>
-<script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}</script>
+<script type="module" src="/js/app.js"></script>
 </body>
 </html>
